@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2015. Yutaka Kato. All rights reserved.
+  ~ https://github.com/mikan/Java8TrainingCourse
+  -->
+
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com">
+  <information>
+    <title>Credit Card Finder JavaFX Application</title>
+    <vendor>tAsktoys</vendor>
+    <description>The Credit Card Finder.</description>
+    <offline-allowed />
+  </information>
+  <resources>
+    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
+    <jar href="CreditCardFinder.jar" />
+  </resources>
+  <resources>
+    <j2se version="1.8+" href="http://java.sun.com/products/autodl/j2se"/>
+  </resources>
+<security>
+  <all-permissions/>
+</security>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="CreditCardFinder">
+    <param name="requiredFXVersion" value="2.2+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="com.tasktoys.java8ws.mikan.ch9.ex12.ui.fx.CreditCardFinderApplication" name="CreditCardFinder" />
+  <update check="background" />
+</jnlp>

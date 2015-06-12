@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+  ~ Copyright (c) 2015. Yutaka Kato. All rights reserved.
+  ~ https://github.com/mikan/Java8TrainingCourse
+  -->
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="local.js8ri.ch09.ex12.ui.fx.CreditCardFinderController">
+   <children>
+       <HBox alignment="CENTER" prefHeight="35.0" prefWidth="600.0">
+          <children>
+            <CheckBox fx:id="subFolderCheckBox" mnemonicParsing="false" selected="true" text="Sub Folder">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="ignoreCaseCheckBox" mnemonicParsing="false" selected="true" text="Ignore Case">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </CheckBox>
+              <TextField fx:id="pathTextField" prefHeight="25.0" prefWidth="295.0">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin></TextField>
+              <Button mnemonicParsing="false" onAction="#handleFindButtonAction" text="Find">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin></Button>
+          </children>
+       </HBox>
+       <ListView fx:id="resultListView" prefHeight="375.0" prefWidth="600.0" />
+      <HBox prefHeight="7.0" prefWidth="600.0">
+         <children>
+            <ProgressIndicator fx:id="progressIndicator" focusTraversable="false" prefHeight="17.0" prefWidth="23.0" progress="-1.0" />
+            <Label fx:id="statusLabel" text="Press &quot;Find&quot; button." />
+         </children>
+      </HBox>
+   </children>
+</VBox>

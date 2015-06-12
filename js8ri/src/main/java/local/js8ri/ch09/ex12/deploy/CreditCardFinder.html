@@ -1,0 +1,47 @@
+<!--
+  ~ Copyright (c) 2015. Yutaka Kato. All rights reserved.
+  ~ https://github.com/mikan/Java8TrainingCourse
+  -->
+
+<html><head>
+  <SCRIPT src="http://java.com/js/dtjava.js"></SCRIPT>
+<script>
+    function launchApplication(jnlpfile) {
+        dtjava.launch(            {
+                url : 'CreditCardFinder.jnlp'
+            },
+            {
+                javafx : '2.2+'
+            },
+            {}
+        );
+        return false;
+    }
+</script>
+
+<script>
+    function javafxEmbed() {
+        dtjava.embed(
+            {
+                url : 'CreditCardFinder.jnlp',
+                placeholder : 'javafx-app-placeholder',
+                width : 0,
+                height : 0
+            },
+            {
+                javafx : '2.2+'
+            },
+            {}
+        );
+    }
+    <!-- Embed FX application into web page once page is loaded -->
+    dtjava.addOnloadCallback(javafxEmbed);
+</script>
+
+</head><body>
+<h2>Test page for <b>CreditCardFinder</b></h2>
+  <b>Webstart:</b> <a href='CreditCardFinder.jnlp' onclick="return launchApplication('CreditCardFinder.jnlp');">click to launch this app as webstart</a><br><hr><br>
+
+  <!-- Applet will be inserted here -->
+  <div id='javafx-app-placeholder'></div>
+</body></html>

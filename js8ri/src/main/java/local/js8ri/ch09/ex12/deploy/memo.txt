@@ -1,0 +1,23 @@
+------------------------------
+THE FUCKING CREDIT CARD FINDER
+------------------------------
+
+Run as JAR:
+    java -jar CreditCardFinder.jar
+
+Run as Java Web Start:
+    javaws CreditCardFinder.jnlp
+
+Allow to execute this JWS:
+    1. Open "Javaコントロール・パネル".
+    2. Select "セキュリティ" tab.
+    3. Click [サイト・リストの編集].
+    4. 場所: "file///"
+    5. Click [OK]
+
+Creation memo:
+    1. javafxpackager.exe -createjar -outdir build\unsigned -outfile CreditCardFinder -name CreditCardFinder -title "Credit Card Finder" -appclass com.tasktoys.java8ws.mikan.ch9.ex12.Launcher -v -srcdir build\classes -allpermissions  -embedCertificates -outfile CreditCardFinder
+    2. Remove unused classes from JAR by hand! (Optional)
+    3. javafxpackager.exe -signjar -srcdir build\unsigned -outdir build\signed -keyStore %HOMEPATH%\.keystore -storePass ******* -alias mikankey
+    4. javafxpackager.exe -deploy -srcdir build\classes -outdir build\deploy -outfile CreditCardFinder -name CreditCardFinder -appclass com.tasktoys.java8ws.mikan.ch9.ex12.Launcher -v
+    5. Edit JNLP by hand!

@@ -1,0 +1,6 @@
+language: java
+jdk:
+  - oraclejdk8
+script: gradle check
+notifications:
+  email: false

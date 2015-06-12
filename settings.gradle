@@ -1,0 +1,8 @@
+/*
+ * Copyright (c) 2015. Yutaka Kato. All rights reserved.
+ * https://github.com/mikan/Java8TrainingCourse
+ */
+
+rootProject.name = 'Java8TrainingCourse'
+include 'js8ri'
+

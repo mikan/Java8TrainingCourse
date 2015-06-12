@@ -1,0 +1,22 @@
+/*
+ * Copyright (c) 2015. Yutaka Kato. All rights reserved.
+ * https://github.com/mikan/Java8TrainingCourse
+ */
+
+group 'local'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'findbugs'
+apply plugin: 'pmd'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
