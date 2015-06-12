@@ -1,26 +1,49 @@
 # Java 8 Training Course
 
-## ŠT—v
+[![Build Status](https://travis-ci.org/mikan/Java8TrainingCourse.svg)](https://travis-ci.org/mikan/Java8TrainingCourse)
 
-–{ƒŠƒ|ƒWƒgƒŠ‚ÍAu2015 ”N“x Java 8 Šî–{‹ZpK“¾ƒR[ƒXv‚Ì @mikan ‚Ì‰Û‘è‚ğ•ÛŠÇE‹¤—L‚·‚é‚½‚ß‚ÌƒŠƒ|ƒWƒgƒŠ‚Å‚·B
+### æ¦‚è¦
 
-### ‰Û‘è–{
+æœ¬ãƒªãƒã‚¸ãƒˆãƒªã¯ã€ã€Œ2015 å¹´åº¦ Java 8 åŸºæœ¬æŠ€è¡“ç¿’å¾—ã‚³ãƒ¼ã‚¹ã€ã® @mikan ã®èª²é¡Œã‚’ä¿ç®¡ãƒ»å…±æœ‰ã™ã‚‹ãŸã‚ã®ãƒªãƒã‚¸ãƒˆãƒªã§ã™ã€‚
 
-Java ƒvƒƒOƒ‰ƒ}[‚È‚çK“¾‚µ‚Ä‚¨‚«‚½‚¢ Java SE 8 À‘HƒvƒƒOƒ‰ƒ~ƒ“ƒO
- (’˜ÒF Cay S. Horstmann@’˜/Ä“c –F÷@–ó ISBNF978-4-8443-3667-9)
+#### èª²é¡Œæœ¬
 
-## ŠJ”­ŠÂ‹«
+Java ãƒ—ãƒ­ã‚°ãƒ©ãƒãƒ¼ãªã‚‰ç¿’å¾—ã—ã¦ãŠããŸã„ Java SE 8 å®Ÿè·µãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°
+ (è‘—è€…ï¼š Cay S. Horstmannã€€è‘—/æŸ´ç”° èŠ³æ¨¹ã€€è¨³ ISBNï¼š978-4-8443-3667-9)
 
-* JDK: Oracle Java SE Development Kit 8
-* IDE: JetBrains IntelliJ IDEA Ultimate 14
+### å®Ÿæ–½èª¬æ˜
 
-## Ó«
+#### ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆæ§‹æˆ
 
-### Œ¤Cw“±
+ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª:
+
+:file_folder: [js8ri/src/**main**/java/local/js8ri](js8ri/src/main/java/local/js8ri)
+
+ãƒ†ã‚¹ãƒˆã‚³ãƒ¼ãƒ‰ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª:
+
+:file_folder: [js8ri/src/**test**/java/local/js8ri](js8ri/src/test/java/local/js8ri)
+
+#### é–‹ç™ºç’°å¢ƒ
+
+JDK:
+
+Oracle Java SE Development Kit 8
+
+IDE:
+
+JetBrains IntelliJ IDEA Ultimate 14
+
+Build system:
+
+Gradle
+
+### è¬è¾
+
+#### ç ”ä¿®æŒ‡å°
 
 @YoshikiShibata
 
-### Java 8 •×‹­‰ï
+#### Java 8 å‹‰å¼·ä¼š
 
 @MrBearing @YuichiroSato @namichan0801 @LagunaPresa @intptr-t @s-hosoai
 
