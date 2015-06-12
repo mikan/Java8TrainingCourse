@@ -18,7 +18,7 @@ public class TestTryWithResources2 {
     @Test
     public void testMain_emptyInput() throws Throwable {
         TryWithResources2.main(null); // Check exception
-        File file = new File("out/ch9.ex02.txt");
+        File file = new File("build/ch9.ex02.txt");
         assertTrue(file.exists());
     }
 }
