@@ -5,22 +5,48 @@
 
 package local.js8ri.ch01.ex01;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * @author mikan
  */
 public class ArraysSort {
 
-    public static void main(String[] args) {
-
-        String[] words = {"hoge", "fuga", "piyo", "foo", "bar"};
-
-        System.out.println("[main]   thread: " + Thread.currentThread().getName()); // Result: main
-
+    /**
+     * Sort by sequential execution.
+     *
+     * @param words list of words
+     * @return thread ids
+     */
+    public List<Long> doSort(String[] words) {
+        List<Long> threadIds = new ArrayList<>();
+        threadIds.add(Thread.currentThread().getId());
         Arrays.sort(words, (first, second) -> {
-            System.out.println("[lambda] thread: " + Thread.currentThread().getName()); // Result: main
+            threadIds.add(Thread.currentThread().getId());
             return Integer.compare(first.length(), second.length());
         });
+        return threadIds;
+    }
+
+    /**
+     * Sort by parallel execution.
+     *
+     * @param words list of words
+     * @return thread ids
+     */
+    public List<Long> doSortAsParallel(String[] words) {
+        if (words.length <= (1 << 13)) { // Arrays.MIN_ARRAY_SORT_GRAN = 1 << 13 (2^13 = 8192)
+            System.out.println("WARNING: words.length is not reaches a minimum granularity.");
+        }
+        List<Long> threadIds = new CopyOnWriteArrayList<>();
+        threadIds.add(Thread.currentThread().getId());
+        Arrays.parallelSort(words, (first, second) -> {
+            threadIds.add(Thread.currentThread().getId());
+            return Integer.compare(first.length(), second.length());
+        });
+        return threadIds;
     }
 }
