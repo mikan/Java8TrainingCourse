@@ -10,15 +10,25 @@ apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'findbugs'
 apply plugin: 'pmd'
+apply plugin: 'com.github.kt3k.coveralls'
 
 sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
 findbugs {
@@ -35,8 +45,4 @@ pmd {
             "java-basic",
             "java-braces"
     ]
-}
-
-jacoco {
-    applyTo(tasks.withType(JavaExec))
 }

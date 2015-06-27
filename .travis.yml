@@ -1,8 +1,12 @@
 language: java
 jdk:
   - oraclejdk8
+env:
+  - TERM=dumb
 before_install:
   - chmod +x gradlew
-script: gradle check
+script: gradle build check
+after_success:
+  - gradle jacocoTestReport coveralls
 notifications:
   email: false
