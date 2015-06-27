@@ -58,7 +58,7 @@ public class MultiCatchAndThrow {
     //      line 46: 23
     //    LocalVariableTable:
     //       Start  Length  Slot  Name   Signature
-    //          23       2     1     e   Ljava/io/IOException; ★ IOE になってるね！
+    //          23       2     1     e   Ljava/io/IOException; (!!!)
     //           0      25     0  this   Lcom/tasktoys/java8ws/mikan/ch9/ex03/MultiCatchAndThrow;
 
     public void process2() throws IOException {
