@@ -28,7 +28,7 @@ public class ReduceArrayListsTest {
     public static List<ArrayList<String>> empty = new ArrayList<>();
 
     @DataPoint
-    public static List<ArrayList<String>> source;
+    public static List<ArrayList<String>> source = new ArrayList<>();
 
     static {
         source.add(createArrayList("1-1", "1-2", "1-3"));
