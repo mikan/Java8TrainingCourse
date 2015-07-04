@@ -19,7 +19,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- *@author ykatoh
+ *@author mikan
  */
 @RunWith(Theories.class)
 public class ReduceArrayListsTest {

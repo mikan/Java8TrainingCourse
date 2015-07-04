@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
- * @author ykatoh
+ * @author mikan
  */
 public class ReduceArrayLists<T> {
 
