@@ -50,7 +50,7 @@ public class ArraysSortTest {
     public void testDoSortAsParallel_smallInput(String[] input) {
         assumeTrue(input.length <= DATA_SIZE);
         ArraysSort arraysSort = new ArraysSort();
-        List<Long> threadIds = arraysSort.doSort(input);
+        List<Long> threadIds = arraysSort.doSortAsParallel(input);
         assertThat(threadIds, everyItem(is(threadIds.get(0)))); // Same as sequential when small input
     }
 }
