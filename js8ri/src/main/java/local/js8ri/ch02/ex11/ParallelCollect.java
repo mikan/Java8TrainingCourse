@@ -6,6 +6,7 @@
 package local.js8ri.ch02.ex11;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collector;
@@ -31,13 +32,7 @@ public class ParallelCollect {
         AtomicInteger index = new AtomicInteger();
         return stream.collect(Collector.of(
                 // supplier
-                () -> {
-                    ArrayList<T> list = new ArrayList<>(size);
-                    for (int i = 0; i < size; i++) {
-                        list.add(null);
-                    }
-                    return list;
-                },
+                () -> new ArrayList<>(Collections.nCopies(size, null)),
                 // accumulator
                 (list, t) -> list.set(index.getAndIncrement(), t),
                 // combiner
