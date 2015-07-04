@@ -21,9 +21,17 @@ public class Zip {
     private static final boolean parallel = false;
 
     private Zip() {
-
+        // static use only
     }
 
+    /**
+     * Zip two streams.
+     *
+     * @param first non-{@code null} first stream
+     * @param second non-{@code null} second stream
+     * @param <T> type of elements
+     * @return non-{@code null} zipped stream
+     */
     public static <T> Stream<T> zip(Stream<T> first, Stream<T> second) {
         Objects.requireNonNull(first);
         Objects.requireNonNull(second);
