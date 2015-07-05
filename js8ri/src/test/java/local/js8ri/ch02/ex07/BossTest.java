@@ -8,7 +8,6 @@ package local.js8ri.ch02.ex07;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
-import org.junit.runners.model.TestTimedOutException;
 
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
@@ -30,11 +29,6 @@ public class BossTest {
         assertTrue(Boss.isFinite(Stream.of("foo", "bar").parallel()));
         assertFalse(Boss.isFinite(Stream.generate(() -> "foo")));
         assertFalse(Boss.isFinite(Stream.generate(() -> "foo").parallel()));
-    }
-
-    @Test(expected = TestTimedOutException.class)
-    public void testIsFiniteHungUp_infiniteInput() {
-        Boss.isFiniteHungUp(Stream.generate(() -> "foo"));
     }
 
     @Test
