@@ -10,6 +10,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Objects;
 
 /**
  * @author mikan
@@ -20,7 +21,9 @@ public class InvokeOldLibrary {
         new InvokeOldLibrary().invoke("oldlib/OldLibraryMain.jar", "OldLibraryMain");
     }
 
-    public void invoke(String jarPath, String className) throws MalformedURLException {
+    public boolean invoke(String jarPath, String className) throws MalformedURLException {
+        Objects.requireNonNull(jarPath);
+        Objects.requireNonNull(className);
         ClassLoader loader = URLClassLoader.newInstance(
                 new URL[]{getClass().getClassLoader().getResource(jarPath)},
                 getClass().getClassLoader()
@@ -29,11 +32,12 @@ public class InvokeOldLibrary {
             Class<?> clazz = Class.forName(className, true, loader);
             Method method = clazz.getMethod("main", String[].class);
             method.invoke(null, new Object[]{null}); // Success: binary-compatible
+            return true;
         } catch (InvocationTargetException e) {
             System.err.println(e.getCause());
-            e.printStackTrace();
         } catch (ReflectiveOperationException e) {
             System.err.println(e);
         }
+        return false;
     }
 }

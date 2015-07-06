@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 import java.net.URI;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -25,7 +26,9 @@ public class CompileOldLibrary {
         new CompileOldLibrary().compile("oldlib/OldLibraryMain.java7", "OldLibraryMain");
     }
 
-    public void compile(String path, String className) {
+    public boolean compile(String path, String className) {
+        Objects.requireNonNull(path);
+        Objects.requireNonNull(className);
         String source = new Scanner(getClass().getClassLoader().getResourceAsStream(path)).useDelimiter("\\A").next();
         Iterable<String> options = Arrays.asList("-d", "build");
         Iterable<JavaFileObject> units = Collections.singletonList(new MyJavaFileObject(className, source));
@@ -41,6 +44,7 @@ public class CompileOldLibrary {
                 System.err.println(e);
             }
         }
+        return success;
     }
 
     private static class MyJavaFileObject extends SimpleJavaFileObject {
@@ -50,6 +54,8 @@ public class CompileOldLibrary {
         public MyJavaFileObject(String name, String source) {
             super(URI.create("string:///" + name + JavaFileObject.Kind.SOURCE.extension),
                     JavaFileObject.Kind.SOURCE);
+            Objects.requireNonNull(name);
+            Objects.requireNonNull(source);
             this.source = source;
         }
 
