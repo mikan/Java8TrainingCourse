@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
  */
 public class SwingController implements Initializable {
 
+    private static final String FXML = "swing.fxml";
+
     @FXML
     JFrameAdapter jframe;
 
@@ -33,7 +35,9 @@ public class SwingController implements Initializable {
     }
 
     public void load() throws IOException {
-        FXMLLoader.load(getClass().getClassLoader().getResource("swing.fxml"));
+        URL nb = getClass().getResource(FXML); // for NetBeans & Eclipse
+        URL ij = getClass().getClassLoader().getResource(FXML); // for IntelliJ
+        FXMLLoader.load(nb == null ? ij : nb);
     }
 
     @Override

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?import java.lang.*?>
+<?import java.awt.*?>
+<?import javax.swing.*?>
+<?import local.js8ri.ch04.ex08.*?>
+<JFrameAdapter xmlns:fx="http://javafx.com/fxml" name="parent" title="fxml swing" visible="true"
+               fx:id="jframe" fx:controller="local.js8ri.ch04.ex08.SwingController">
+    <defaultCloseOperation>
+        <JFrame fx:constant="EXIT_ON_CLOSE" />
+    </defaultCloseOperation>
+    <size>
+        <DimensionAdapter width="300" height="300" />
+    </size>
+    <layout>
+        <FlowLayout />
+    </layout>
+    <jMenuBar>
+        <JMenuBarAdapter>
+            <children>
+                <JMenuAdapter text="file">
+                    <children>
+                        <JMenuItem text="exit" fx:id="exitItem" />
+                    </children>
+                </JMenuAdapter>
+                <JMenuAdapter text="help">
+                    <children>
+                        <JMenuAdapter text="help!">
+                            <children>
+                                <JMenuAdapter text="help!!">
+                                    <children>
+                                        <JMenuAdapter text="help!!!">
+                                            <children>
+                                                <JMenuItem text="give up!" />
+                                            </children>
+                                        </JMenuAdapter>
+                                    </children>
+                                </JMenuAdapter>
+                            </children>
+                        </JMenuAdapter>
+                        <JMenuItem text="about..." fx:id="aboutItem" />
+                    </children>
+                </JMenuAdapter>
+            </children>
+        </JMenuBarAdapter>
+    </jMenuBar>
+    <children>
+        <JPanelAdapter>
+            <children>
+                <JLabel text="label" />
+                <JButton text="button" />
+            </children>
+        </JPanelAdapter>
+    </children>
+</JFrameAdapter>
