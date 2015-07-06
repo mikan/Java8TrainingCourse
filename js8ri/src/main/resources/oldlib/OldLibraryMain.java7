@@ -1,0 +1,15 @@
+public class OldLibraryMain {
+       public static void main(String[] args) {
+            new OldLibraryImpl().stream();
+        };
+        interface OldLibrary extends java.util.Collection {
+            void stream();
+        }
+        static class OldLibraryImpl extends java.util.ArrayList implements OldLibrary {
+        @Override
+        public void stream() {
+            System.out.println("stream()");
+        }
+    }
+}
+
