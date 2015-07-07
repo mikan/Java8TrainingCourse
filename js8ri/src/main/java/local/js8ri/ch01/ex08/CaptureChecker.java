@@ -8,18 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author mikan
  */
 public class CaptureChecker {
 
-    public static void main(String[] args) {
-        sample1();
-        sample2();
-        sample3();
+    private CaptureChecker() {
+        // static use only
     }
 
-    private static void sample1() {
+    public static void sample1() {
         String[] names = {"Peter", "Paul", "Mary"};
         List<Runnable> runners = new ArrayList<>();
         for (String name : names) {
@@ -28,7 +25,7 @@ public class CaptureChecker {
         runners.forEach(run -> new Thread(run).start());
     }
 
-    private static void sample2() {
+    public static void sample2() {
         String[] names = {"Peter", "Paul", "Mary"};
         List<Runnable> runners = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
@@ -38,7 +35,7 @@ public class CaptureChecker {
         runners.forEach(run -> new Thread(run).start());
     }
 
-    private static void sample3() {
+    public static void sample3() {
         String[] names = {"Peter", "Paul", "Mary"};
         List<Runnable> runners = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {

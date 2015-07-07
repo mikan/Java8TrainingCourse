@@ -5,24 +5,16 @@
 package local.js8ri.ch01.ex06;
 
 /**
- *
  * @author mikan
  */
-public class UncheckingThread {
-
-    public static void main(String[] args) {
-        new Thread(uncheck(() -> {
-            System.out.println("Zzz");
-            Thread.sleep(1000);
-        })).start();
-    }
+public class UnCheckingRunnable {
 
     @FunctionalInterface
     public interface RunnableEx {
-        public void run() throws Exception;
+        void run() throws Exception;
     }
 
-    public static Runnable uncheck(RunnableEx runner) {
+    public static Runnable unCheck(RunnableEx runner) {
         return () -> {
             try {
                 runner.run();

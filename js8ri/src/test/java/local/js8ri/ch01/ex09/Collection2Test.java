@@ -16,6 +16,16 @@ import static org.junit.Assert.assertTrue;
  */
 public class Collection2Test {
 
+    @Test(expected = NullPointerException.class)
+    public void testForEachIf_actionNPE() {
+        new ArrayList2<String>().forEachIf(null, s -> s.contains("-"));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testForEachIf_predicateNPE() {
+        new ArrayList2<String>().forEachIf(System.out::println, null);
+    }
+
     @Test
     public void testForEachIf_NormalCall() {
         String prefix = "test-";

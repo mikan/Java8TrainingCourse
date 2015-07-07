@@ -5,28 +5,9 @@
 package local.js8ri.ch01.ex07;
 
 /**
- *
  * @author mikan
  */
 public class AndThen {
-
-    public static void main(String[] args) {
-        new Thread(andThen(() -> {
-            System.out.println("hoge");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                System.err.println(ex);
-            }
-        }, () -> {
-            System.out.println("fuga");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                System.err.println(ex);
-            }
-        })).start();
-    }
 
     public static Runnable andThen(Runnable first, Runnable second) {
         return () -> {
