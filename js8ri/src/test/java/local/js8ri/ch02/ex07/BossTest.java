@@ -25,10 +25,15 @@ public class BossTest {
 
     @Test
     public void testIsFinite_allInput() {
+        // Finite streams
         assertTrue(Boss.isFinite(Stream.of("foo", "bar")));
         assertTrue(Boss.isFinite(Stream.of("foo", "bar").parallel()));
+        // Infinite streams
         assertFalse(Boss.isFinite(Stream.generate(() -> "foo")));
         assertFalse(Boss.isFinite(Stream.generate(() -> "foo").parallel()));
+        // Limited infinite streams
+        assertFalse(Boss.isFinite(Stream.generate(() -> "foo").limit(100)));
+        assertFalse(Boss.isFinite(Stream.generate(() -> "foo").limit(100).parallel()));
     }
 
     @Test
