@@ -40,4 +40,56 @@ public class BossTest {
     public void testIsFiniteHungUp_finiteInput() {
         assertTrue(Boss.isFiniteHungUp(Stream.of("foo", "bar").parallel()));
     }
+
+    @Test
+    public void testDumpCharacteristics_run() {
+
+        /*
+        ORDERED:    false
+        DISTINCT:   false
+        SORTED:     false
+        SIZED:      true
+        NONNULL:    false
+        IMMUTABLE:  false
+        CONCURRENT: false
+        SUBSIZED:   true
+         */
+        Boss.dumpCharacteristics(Stream.empty());
+
+        /*
+        ORDERED:    true
+        DISTINCT:   false
+        SORTED:     false
+        SIZED:      true
+        NONNULL:    false
+        IMMUTABLE:  true
+        CONCURRENT: false
+        SUBSIZED:   true
+         */
+        Boss.dumpCharacteristics(Stream.of("foo", "bar"));
+
+        /*
+        ORDERED:    false
+        DISTINCT:   false
+        SORTED:     false
+        SIZED:      false
+        NONNULL:    false
+        IMMUTABLE:  true
+        CONCURRENT: false
+        SUBSIZED:   false
+         */
+        Boss.dumpCharacteristics(Stream.generate(() -> "foo"));
+
+        /*
+        ORDERED:    false
+        DISTINCT:   false
+        SORTED:     false
+        SIZED:      false
+        NONNULL:    false
+        IMMUTABLE:  false
+        CONCURRENT: false
+        SUBSIZED:   false
+         */
+        Boss.dumpCharacteristics(Stream.generate(() -> "foo").limit(10));
+    }
 }
