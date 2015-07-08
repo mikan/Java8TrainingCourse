@@ -36,7 +36,7 @@ public class DigitalClockFrame extends Frame {
     /**
      * 画面入力イベントのアダプターです。
      */
-    class DigitalClockWindowAdapter extends WindowAdapter {
+    static class DigitalClockWindowAdapter extends WindowAdapter {
 
         @Override
         public void windowClosing(WindowEvent e) {
@@ -48,7 +48,7 @@ public class DigitalClockFrame extends Frame {
      * 描画するためのキャンバスです。
      */
     @SuppressWarnings("serial")
-    class DigitalClockCanvas extends Canvas implements Runnable {
+    static class DigitalClockCanvas extends Canvas implements Runnable {
 
         private Font font1 = new Font(Font.SANS_SERIF, Font.PLAIN, 11);
         private Font font2 = new Font(Font.SANS_SERIF, Font.BOLD, 50);

@@ -5,32 +5,31 @@
 package local.js8ri.ch01.ex11;
 
 /**
- *
  * @author mikan
  */
 public class IAndJ {
 
-    public static void main(String[] args) {
-        // IAndJImpl1 impl = new IAndJImpl1();
-        // ERROR: staticでない変数 thisをstaticコンテキストから参照することはできません
-
+    private IAndJ() {
+        // no content in parent
     }
 
     public interface NormalI {
-        public void f();
+        void f();
     }
 
     public interface NormalJ {
-        public void f();
+        void f();
     }
 
     public interface StaticI {
-        public default void f() {
+        default void f() {
+            System.out.println("This is StaticI.f()");
         }
     }
 
-    public interface staticJ {
-        public default void f() {
+    public interface StaticJ {
+        default void f() {
+            System.out.println("This is StaticJ.f()");
         }
     }
 
@@ -38,7 +37,31 @@ public class IAndJ {
 
         @Override
         public void f() {
-            System.out.println("This is f()");
+            System.out.println("This is IAndJImpl1.f()");
+        }
+    }
+
+    public class IAndJImpl2 implements StaticI, StaticJ {
+
+        @Override
+        public void f() {
+            System.out.println("This is IAndJImpl2.f()");
+        }
+    }
+
+    public static class IAndJImpl3 implements NormalI, NormalJ {
+
+        @Override
+        public void f() {
+            System.out.println("This is IAndJImpl3.f()");
+        }
+    }
+
+    public static class IAndJImpl4 implements StaticI, StaticJ {
+
+        @Override
+        public void f() {
+            System.out.println("This is IAndJImpl4.f()");
         }
     }
 }

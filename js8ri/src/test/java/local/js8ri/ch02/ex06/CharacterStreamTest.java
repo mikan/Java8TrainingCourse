@@ -4,10 +4,12 @@
  */
 package local.js8ri.ch02.ex06;
 
+import org.junit.Test;
+
 import java.util.stream.Stream;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
-import org.junit.Test;
 
 /**
  *
@@ -17,7 +19,7 @@ public class CharacterStreamTest {
 
     @Test
     public void testAAA() {
-        String value = "aiueo";
+        String value = "test";
         Stream<Character> result1 = CharacterStream.characterStream(value);
         Stream<Character> result2 = CharacterStream.characterStream2(value);
         assertNotNull(result1);

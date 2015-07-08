@@ -11,7 +11,7 @@ package local.js8ri.ch01.ex05;
 public class Launcher {
 
     public static void main(String[] args) {
-        System.out.println(new DigitalClockFrame("Digital Clock").getName()); // LOC: 98
-        System.out.println(new UpdatedDigitalClockFrame("Digital Clock").getName()); // LOC: 
+        System.out.println(new DigitalClockFrame("Digital Clock").getName()); // LOC: 101
+        System.out.println(new UpdatedDigitalClockFrame("Digital Clock").getName()); // LOC: 82
     }
 }
