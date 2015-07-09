@@ -5,7 +5,7 @@ env:
   - TERM=dumb
 before_install:
   - chmod +x gradlew
-script: gradle build check
+script: gradle clean build check
 after_success:
   - gradle jacocoTestReport coveralls
 notifications:
