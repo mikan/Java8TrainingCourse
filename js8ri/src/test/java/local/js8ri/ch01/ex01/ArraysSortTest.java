@@ -5,6 +5,7 @@
 
 package local.js8ri.ch01.ex01;
 
+import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
@@ -30,6 +31,16 @@ public class ArraysSortTest {
 
     @DataPoint
     public static String[] large = IntStream.rangeClosed(0, DATA_SIZE).mapToObj(i -> "test" + i).toArray(String[]::new);
+
+    @Test(expected = NullPointerException.class)
+    public void testDoSort_NPE() {
+        new ArraysSort().doSort(null);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testDoSortAsParallel_NPE() {
+        new ArraysSort().doSortAsParallel(null);
+    }
 
     @Theory
     public void testDoSort_allInput(String[] input) {
