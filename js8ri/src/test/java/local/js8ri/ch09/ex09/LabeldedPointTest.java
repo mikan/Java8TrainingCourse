@@ -13,7 +13,7 @@ import org.junit.Test;
  *
  * @author mikan
  */
-public class TestLabeldedPoint {
+public class LabeldedPointTest {
 
     @Test
     public void testEquals() {

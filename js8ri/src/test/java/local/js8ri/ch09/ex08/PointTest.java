@@ -13,7 +13,7 @@ import org.junit.Test;
  *
  * @author mikan
  */
-public class TestPoint {
+public class PointTest {
 
     @Test
     public void testCompareTo_normalCase() {

@@ -4,15 +4,16 @@
  */
 package local.js8ri.ch09.ex10;
 
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test LabeledPoint2.
  *
  * @author mikan
  */
-public class TestLabeledPoint2 {
+public class LabeledPoint2Test {
 
     @Test
     public void testCompareTo() {

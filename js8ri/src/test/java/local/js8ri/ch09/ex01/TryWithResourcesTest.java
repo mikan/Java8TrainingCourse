@@ -2,23 +2,25 @@
  * Copyright (c) 2015. Yutaka Kato. All rights reserved.
  * https://github.com/mikan/Java8TrainingCourse
  */
-package local.js8ri.ch09.ex02;
+package local.js8ri.ch09.ex01;
 
-import java.io.File;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
+import java.io.File;
+
+import static org.junit.Assert.assertTrue;
+
 /**
- * Test for {@link TryWithResources2}.
+ * Test for {@link TryWithResources}.
  *
  * @author mikan
  */
-public class TestTryWithResources2 {
+public class TryWithResourcesTest {
 
     @Test
     public void testMain_emptyInput() throws Throwable {
-        TryWithResources2.main(null); // Check exception
-        File file = new File("build/ch9.ex02.txt");
+        TryWithResources.main(null); // Check exception
+        File file = new File("build/ch9.ex01.txt");
         assertTrue(file.exists());
     }
 }
