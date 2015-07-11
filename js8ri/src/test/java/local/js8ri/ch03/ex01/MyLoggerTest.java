@@ -5,6 +5,7 @@
 
 package local.js8ri.ch03.ex01;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.logging.Level;
@@ -19,20 +20,23 @@ public class MyLoggerTest {
 
     private static final MyLogger SUT = new MyLogger("test", null);
 
+    @BeforeClass
+    public static void prepare() {
+        SUT.setLevel(Level.ALL);
+    }
+
     @Test(expected = NullPointerException.class)
     public void testLogIf_conditionNPE() {
-        SUT.logIf(Level.OFF, null, () -> "test");
+        SUT.logIf(Level.INFO, null, () -> "test NG");
     }
 
     @Test
     public void testLogIf_normalCase() {
-        SUT.setLevel(Level.ALL);
-        assertTrue(SUT.logIf(Level.INFO, () -> true, () -> "test"));
+        assertTrue(SUT.logIf(Level.INFO, () -> true, () -> "test OK"));
     }
 
     @Test
     public void testLogIf_notLoggableCase() {
-        SUT.setLevel(Level.ALL);
-        assertFalse(SUT.logIf(Level.INFO, () -> false, () -> "test"));
+        assertFalse(SUT.logIf(Level.INFO, () -> false, () -> "test NG"));
     }
 }
