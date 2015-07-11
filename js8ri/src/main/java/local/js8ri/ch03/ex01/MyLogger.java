@@ -35,7 +35,7 @@ public class MyLogger extends Logger {
      * @throws MissingResourceException if the resourceBundleName is non-null and
      *                                  no corresponding resource can be found.
      */
-    protected MyLogger(String name, String resourceBundleName) {
+    public MyLogger(String name, String resourceBundleName) {
         super(name, resourceBundleName);
     }
 
