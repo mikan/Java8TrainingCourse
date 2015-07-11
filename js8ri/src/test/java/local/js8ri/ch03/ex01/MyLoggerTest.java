@@ -27,7 +27,7 @@ public class MyLoggerTest {
 
     @Test(expected = NullPointerException.class)
     public void testLogIf_conditionNPE() {
-        SUT.logIf(Level.INFO, null, () -> "test NG");
+        SUT.logIf(Level.SEVERE, null, () -> "test NG");
     }
 
     @Test
@@ -37,6 +37,6 @@ public class MyLoggerTest {
 
     @Test
     public void testLogIf_notLoggableCase() {
-        assertFalse(SUT.logIf(Level.INFO, () -> false, () -> "test NG"));
+        assertFalse(SUT.logIf(Level.SEVERE, () -> false, () -> "test NG"));
     }
 }
