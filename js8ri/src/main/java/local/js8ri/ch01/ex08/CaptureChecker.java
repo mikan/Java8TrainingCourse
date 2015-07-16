@@ -22,7 +22,7 @@ public class CaptureChecker {
         for (String name : names) {
             runners.add(() -> System.out.println("[sample1]" + name));
         }
-        runners.forEach(run -> new Thread(run).start());
+        runners.forEach(run -> run.run());
     }
 
     public static void sample2() {
@@ -32,7 +32,7 @@ public class CaptureChecker {
             String name = names[i];
             runners.add(() -> System.out.println("[sample2]" + name));
         }
-        runners.forEach(run -> new Thread(run).start());
+        runners.forEach(run -> run.run());
     }
 
     public static void sample3() {
@@ -42,6 +42,6 @@ public class CaptureChecker {
             int j = i;
             runners.add(() -> System.out.println("[sample3]" + names[j]));
         }
-        runners.forEach(run -> new Thread(run).start());
+        runners.forEach(run -> run.run());
     }
 }

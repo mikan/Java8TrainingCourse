@@ -27,9 +27,9 @@ public class CaptureCheckerTest {
             [sample2]Peter
             [sample2]Paul
             [sample2]Mary
+            [sample3]Peter
             [sample3]Paul
             [sample3]Mary
-            [sample3]Peter
              */
         } catch (Exception e) {
             fail();
