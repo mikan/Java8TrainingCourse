@@ -6,39 +6,28 @@
 package local.js8ri.ch03.ex05;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
-import local.js8ri.rules.JavaFXThreadingRule;
-import org.junit.Before;
-import org.junit.Rule;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assume.assumeFalse;
-import static org.junit.Assume.assumeNotNull;
 
 /**
  * @author mikan
  */
 public class TransformerAppTest {
 
-    @Rule
-    public JavaFXThreadingRule javafxRule = new JavaFXThreadingRule();
+    private static Image image;
 
-    private static final String IMAGE_URL = "http://www001.upp.so-net.ne.jp/yshibata/myhomepage/images/js8ri.png";
-    private Image image;
-
-    @Before
-    public void initImage() {
-        assumeFalse(javafxRule.isHeadless());
-        if (image == null) {
-            image = new Image(IMAGE_URL);
-        }
+    @BeforeClass
+    public static void initImage() {
+        image = new WritableImage(100, 100);
     }
 
     @Test
     public void testTransform_normalUnaryOperatorInput() {
-        assumeNotNull(image);
         Image result = TransformerApp.transform(image, Color::brighter);
         assertNotNull(result);
         assertNotEquals(result, image);
@@ -46,7 +35,6 @@ public class TransformerAppTest {
 
     @Test
     public void testTransform_normalColorTransformerInput() {
-        assumeNotNull(image);
         Image result = TransformerApp.transform(image, (x, y, c) ->
                 x < 10 || x > image.getWidth() - 10 || y < 10 || y > image.getHeight() - 10 ? Color.GRAY : c);
         assertNotNull(result);
