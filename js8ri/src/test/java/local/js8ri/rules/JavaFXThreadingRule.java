@@ -37,7 +37,7 @@ public class JavaFXThreadingRule implements TestRule {
     @Override
     public Statement apply(Statement statement, Description description) {
         if (isHeadless()) {
-            return statement;
+            return statement; // cannot provide JFX when the headless environment. noted by mikan.
         }
         return new OnJFXThreadStatement(statement);
     }

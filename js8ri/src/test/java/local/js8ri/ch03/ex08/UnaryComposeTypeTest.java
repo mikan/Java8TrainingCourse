@@ -16,6 +16,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assume.assumeFalse;
+import static org.junit.Assume.assumeNotNull;
 
 /**
  * @author mikan
@@ -30,6 +31,7 @@ public class UnaryComposeTypeTest {
 
     @Before
     public void initImage() {
+        assumeFalse(javafxRule.isHeadless());
         if (image == null) {
             image = new Image(IMAGE_URL);
         }
@@ -37,7 +39,7 @@ public class UnaryComposeTypeTest {
 
     @Test
     public void testTransform_normalInput() {
-        assumeFalse(javafxRule.isHeadless());
+        assumeNotNull(image);
         Image result = UnaryComposeType.transform(image, Color::darker);
         assertNotNull(result);
         assertNotEquals(result, image);
