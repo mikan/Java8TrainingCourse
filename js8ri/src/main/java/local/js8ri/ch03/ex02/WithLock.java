@@ -5,6 +5,7 @@
 
 package local.js8ri.ch03.ex02;
 
+import javax.annotation.Nonnull;
 import java.util.Objects;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -25,7 +26,7 @@ public class WithLock {
      * @throws NullPointerException if the argument(s) is(are) {@code null}.
      * @throws IllegalStateException if the lock is already held.
      */
-    public static void withLock(ReentrantLock lock, Runnable runnable) {
+    public static void withLock(@Nonnull ReentrantLock lock, @Nonnull Runnable runnable) {
         Objects.requireNonNull(lock);
         Objects.requireNonNull(runnable);
         if (lock.isLocked()) {

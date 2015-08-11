@@ -5,6 +5,8 @@
 
 package local.js8ri.ch03.ex03;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
@@ -27,19 +29,19 @@ public class MyAssert {
         MyAssert.enabled = enabled;
     }
 
-    public static void assertTrue(BooleanSupplier condition) {
+    public static void assertTrue(@Nullable BooleanSupplier condition) {
         if (enabled && (condition == null || !condition.getAsBoolean())) {
             throw new AssertionError("true expected, but condition is " + condition);
         }
     }
 
-    public static void assertFalse(BooleanSupplier condition) {
+    public static void assertFalse(@Nullable BooleanSupplier condition) {
         if (enabled && (condition == null || condition.getAsBoolean())) {
             throw new AssertionError("false expected, but condition is " + condition);
         }
     }
 
-    public static <T> void assertEquals(Supplier<T> expected, Supplier<T> actual) {
+    public static <T> void assertEquals(@Nullable Supplier<T> expected, @Nullable Supplier<T> actual) {
         if (enabled) {
             if (expected == null ? actual != null : actual == null || !equalsNonNullSuppliers(expected, actual)) {
                 throw new AssertionError(expected + " expected, but actual is " + actual);
@@ -47,7 +49,7 @@ public class MyAssert {
         }
     }
 
-    private static <T> boolean equalsNonNullSuppliers(Supplier<T> expected, Supplier<T> actual) {
+    private static <T> boolean equalsNonNullSuppliers(@Nonnull Supplier<T> expected, @Nonnull Supplier<T> actual) {
         T expectedObject = expected.get(), actualObject = actual.get();
         return expectedObject == null ? actualObject == null : expectedObject.equals(actualObject);
     }

@@ -5,6 +5,8 @@
 
 package local.js8ri.ch03.ex01;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.MissingResourceException;
 import java.util.Objects;
 import java.util.function.BooleanSupplier;
@@ -24,7 +26,7 @@ public class MyLogger extends Logger {
      * @param resourceBundleName name of ResourceBundle to be used for localizing messages for this logger
      * @throws MissingResourceException if the resourceBundleName is non-null and no corresponding resource can be found.
      */
-    public MyLogger(String name, String resourceBundleName) {
+    public MyLogger(@Nullable String name, @Nullable String resourceBundleName) {
         super(name, resourceBundleName);
         setParent(Logger.getLogger(name, resourceBundleName));
         setUseParentHandlers(true);
@@ -41,7 +43,7 @@ public class MyLogger extends Logger {
      * @return logged
      * @throws NullPointerException if the supplier is null
      */
-    public boolean logIf(Level level, BooleanSupplier condition, Supplier<String> msgSupplier) {
+    public boolean logIf(@Nonnull Level level, @Nonnull BooleanSupplier condition, @Nonnull Supplier<String> msgSupplier) {
         Objects.requireNonNull(condition);
         if (isLoggable(level) && condition.getAsBoolean()) {
             log(level, msgSupplier);
