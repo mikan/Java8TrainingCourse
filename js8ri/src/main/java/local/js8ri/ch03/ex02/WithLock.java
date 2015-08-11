@@ -22,14 +22,16 @@ public class WithLock {
      *
      * @param lock     lock
      * @param runnable runnable
-     * @throws NullPointerException if the argument(s) is(are) null.
+     * @throws NullPointerException if the argument(s) is(are) {@code null}.
+     * @throws IllegalStateException if the lock is already held.
      */
     public static void withLock(ReentrantLock lock, Runnable runnable) {
         Objects.requireNonNull(lock);
         Objects.requireNonNull(runnable);
-        if (!lock.isLocked()) {
-            lock.lock();
+        if (lock.isLocked()) {
+            throw new IllegalStateException("Lock is already held.");
         }
+        lock.lock();
         try {
             runnable.run();
         } finally {

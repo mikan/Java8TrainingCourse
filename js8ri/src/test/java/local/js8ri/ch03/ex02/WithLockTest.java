@@ -35,12 +35,11 @@ public class WithLockTest {
         assertTrue(called.get());
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void testWithLock_lockedCase() {
         AtomicBoolean called = new AtomicBoolean();
         ReentrantLock lock = new ReentrantLock();
         lock.lock();
         WithLock.withLock(lock, () -> called.set(true));
-        assertTrue(called.get());
     }
 }

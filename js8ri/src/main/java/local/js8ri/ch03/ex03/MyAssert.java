@@ -9,7 +9,11 @@ import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
 /**
+ * {@code assert} is switchable the argument evaluation by "-ea" VM argument.
+ * Lambda expression's lazy evaluation can provide same functionality.
+ *
  * @author mikan
+ * @see "JSR 41: A Simple Assertion Facility"
  */
 public class MyAssert {
 
