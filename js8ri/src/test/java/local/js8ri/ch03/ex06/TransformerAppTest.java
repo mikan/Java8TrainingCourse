@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assume.assumeFalse;
 
 /**
  * @author mikan
@@ -35,6 +36,7 @@ public class TransformerAppTest {
 
     @Test
     public void testTransform_normalUnaryOperatorInput() {
+        assumeFalse(javafxRule.isHeadless());
         Image result = TransformerApp.transform(image, Color::brighter);
         assertNotNull(result);
         assertNotEquals(result, image);
@@ -42,6 +44,7 @@ public class TransformerAppTest {
 
     @Test
     public void testTransform_normalColorTransformerInput() {
+        assumeFalse(javafxRule.isHeadless());
         Image result = TransformerApp.transform(image, (x, y, c) ->
                 x < 10 || x > image.getWidth() - 10 || y < 10 || y > image.getHeight() - 10 ? Color.GRAY : c);
         assertNotNull(result);
@@ -50,6 +53,7 @@ public class TransformerAppTest {
 
     @Test
     public void testTransform_normalBiFunctionInput() {
+        assumeFalse(javafxRule.isHeadless());
         Image result = TransformerApp.transform(image, (color, arg) -> arg ? color.invert() : color, true);
         assertNotNull(result);
         assertNotEquals(result, image);

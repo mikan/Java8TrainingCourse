@@ -36,7 +36,9 @@ public class JavaFXThreadingRule implements TestRule {
 
     @Override
     public Statement apply(Statement statement, Description description) {
-
+        if (isHeadless()) {
+            return statement;
+        }
         return new OnJFXThreadStatement(statement);
     }
 
@@ -102,5 +104,15 @@ public class JavaFXThreadingRule implements TestRule {
             System.out.println("javafx is initialised in " + (System.currentTimeMillis() - timeMillis) + "ms");
         }
 
+    }
+
+    /**
+     * Check the headless (non-GUI) mode.
+     *
+     * @return {@code true} if the current environment is headless, {@code false} otherwise.
+     * @author mikan
+     */
+    public boolean isHeadless() {
+        return System.getProperty("java.awt.headless", "").equals("true");
     }
 }
