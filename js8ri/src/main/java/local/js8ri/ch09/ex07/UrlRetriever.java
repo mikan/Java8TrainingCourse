@@ -4,14 +4,15 @@
  */
 package local.js8ri.ch09.ex07;
 
+import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.logging.Level;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 /**
@@ -21,18 +22,21 @@ import java.util.logging.Logger;
 public class UrlRetriever {
 
     private static final Logger LOG = Logger.getLogger(UrlRetriever.class.getName());
+    private static final String DEFAULT_URL = "https://github.com/mikan/Java8TrainingCourse/blob/master/README.md";
 
-    public static void main(String[] args) {
-        String target = "https://github.com/Java8Workshop/About/blob/master/README.md";
+    public static void main(String[] args) throws IOException {
+        String target = DEFAULT_URL;
         if (args != null && args.length > 0) {
             target = args[0];
         }
-        try (InputStream input = new URL(target).openStream()) {
-            Files.copy(input, Paths.get("out/ch9.ex07.txt"), StandardCopyOption.REPLACE_EXISTING);
-        } catch (MalformedURLException ex) {
-            LOG.log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            LOG.log(Level.SEVERE, null, ex);
+        new UrlRetriever().retrieve(new URL(target), Paths.get("js8ri/build/ch9.ex07.txt"));
+    }
+
+    public void retrieve(@Nonnull URL from, @Nonnull Path to) throws IOException {
+        Objects.requireNonNull(from);
+        Objects.requireNonNull(to);
+        try (InputStream input = from.openStream()) {
+            Files.copy(input, to, StandardCopyOption.REPLACE_EXISTING);
         }
     }
 }
