@@ -39,6 +39,7 @@ public class FilterInterfaces {
         });
     }
 
+    @Nonnull
     public Class[] getFilterFunctionalInterfaces() throws IOException {
         List<String> lines = new ArrayList<>();
         lines.addAll(retrieveUrl("http://docs.oracle.com/javase/8/docs/api/allclasses-frame.html"));
@@ -54,6 +55,7 @@ public class FilterInterfaces {
                 .toArray(Class[]::new);
     }
 
+    @Nonnull
     private List<String> retrieveUrl(@Nonnull String url) throws IOException {
         List<String> lines = new ArrayList<>();
         try (InputStream input = new URL(url).openStream()) {
@@ -66,11 +68,13 @@ public class FilterInterfaces {
         return lines;
     }
 
+    @Nonnull
     private String getName(@Nonnull String line) {
         return line.substring(line.indexOf("\"") + 1, line.indexOf(".html")).replaceAll("/", ".");
     }
 
-    private Optional<Class> getClass(String name) {
+    @Nonnull
+    private Optional<Class> getClass(@Nonnull String name) {
         try {
             return Optional.of(Class.forName(name));
         } catch (ClassNotFoundException e) {

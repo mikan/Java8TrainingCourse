@@ -4,7 +4,6 @@
  */
 package local.js8ri.ch03.ex12;
 
-import java.util.function.UnaryOperator;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -14,13 +13,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javax.annotation.Nonnull;
+import java.util.function.UnaryOperator;
+
 /**
  *
  * @author mikan
  */
 public class TransformerApp extends Application {
 
-    private static final String IMAGE_URL = "https://pbs.twimg.com/media/CEDfyQEVEAAkERc.png";
+    private static final String IMAGE_URL = "http://www001.upp.so-net.ne.jp/yshibata/myhomepage/images/js8ri.png";
 
     public static void main(String[] args) {
         TransformerApp.launch();
@@ -47,7 +49,8 @@ public class TransformerApp extends Application {
         primaryStage.show();
     }
 
-    public static Image transform(Image in, UnaryOperator<Color> f) {
+    @Nonnull
+    public static Image transform(@Nonnull Image in, @Nonnull UnaryOperator<Color> f) {
         int width = (int) in.getWidth();
         int height = (int) in.getHeight();
         WritableImage out = new WritableImage(width, height);
@@ -59,13 +62,15 @@ public class TransformerApp extends Application {
         return out;
     }
 
-    public static ColorTransformer createColorTransformer(UnaryOperator<Color> f) {
+    @Nonnull
+    public static ColorTransformer createColorTransformer(@Nonnull UnaryOperator<Color> f) {
         return (x, y, c) -> f.apply(c); // unused: x, y
     }
 
     @FunctionalInterface
     public interface ColorTransformer {
 
-        Color apply(int x, int y, Color colorAtXY);
+        @Nonnull
+        Color apply(int x, int y, @Nonnull Color colorAtXY);
     }
 }

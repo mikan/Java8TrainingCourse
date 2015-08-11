@@ -8,17 +8,20 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- *
  * @author mikan
  */
 public class ComparatorGenerator {
 
+    private ComparatorGenerator() {
+        // static use only
+    }
+
     public static void main(String[] args) {
-        String[] source = {"111", "112", "113", "11 1", "11 2", "11 3"};
+        String[] source = {"aaa", "aab", "aac", "aa a", "aa b", "aa c"};
         String[] ttt = source.clone();
         String[] fff = source.clone();
         Arrays.sort(ttt, generate(true, true, true));
-        Arrays.sort(ttt, generate(false, false, false));
+        Arrays.sort(fff, generate(false, false, false));
         System.out.println("--- t t t ----");
         for (String s : ttt) {
             System.out.println(s);
@@ -29,9 +32,8 @@ public class ComparatorGenerator {
         }
     }
 
-    public static Comparator<String> generate(
-            boolean naturalOrder, boolean caseSensitive, boolean acceptSpace) {
-        return (String o1, String o2) -> {
+    public static Comparator<String> generate(boolean naturalOrder, boolean caseSensitive, boolean acceptSpace) {
+        return (o1, o2) -> {
             String s1 = acceptSpace ? o1 : o1.replaceAll(" ", "");
             String s2 = acceptSpace ? o2 : o2.replaceAll(" ", "");
             int result = caseSensitive ? s1.compareTo(s2) : s1.compareToIgnoreCase(s2);
