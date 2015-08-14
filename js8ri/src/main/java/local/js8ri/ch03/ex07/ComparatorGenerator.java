@@ -4,7 +4,6 @@
  */
 package local.js8ri.ch03.ex07;
 
-import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -14,22 +13,6 @@ public class ComparatorGenerator {
 
     private ComparatorGenerator() {
         // static use only
-    }
-
-    public static void main(String[] args) {
-        String[] source = {"aaa", "aab", "aac", "aa a", "aa b", "aa c"};
-        String[] ttt = source.clone();
-        String[] fff = source.clone();
-        Arrays.sort(ttt, generate(true, true, true));
-        Arrays.sort(fff, generate(false, false, false));
-        System.out.println("--- t t t ----");
-        for (String s : ttt) {
-            System.out.println(s);
-        }
-        System.out.println("--- f f f ----");
-        for (String s : fff) {
-            System.out.println(s);
-        }
     }
 
     public static Comparator<String> generate(boolean naturalOrder, boolean caseSensitive, boolean acceptSpace) {
