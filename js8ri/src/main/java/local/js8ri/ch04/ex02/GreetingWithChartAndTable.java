@@ -14,6 +14,8 @@ import javafx.scene.control.*;
 import javafx.util.Callback;
 
 import java.util.Comparator;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * CAUTION: This class is not thread-safe.
@@ -50,11 +52,14 @@ public class GreetingWithChartAndTable<S> {
     private volatile ObjectProperty<Callback<TableView<S>, Boolean>> sortPolicy = null;
     private volatile BooleanProperty tableMenuButtonVisible = null;
 
+    private final Map<String, Object> cache = new ConcurrentHashMap<>();
+
     public final StringProperty textProperty() {
         if (text == null) {
             synchronized(this) {
                 if (text == null) {
-                    text = new SimpleStringProperty("");
+                    text = new SimpleStringProperty((String) cache.get("text"));
+                    cache.remove("text");
                 }
             }
         }
@@ -62,11 +67,15 @@ public class GreetingWithChartAndTable<S> {
     }
 
     public final void setText(String newValue) {
-        textProperty().set(newValue);
+        if (text == null) {
+            cache.put("text", newValue);
+        } else {
+            textProperty().set(newValue);
+        }
     }
 
     public final String getText() {
-        return textProperty().get();
+        return text == null ? (String) cache.get("text") : textProperty().get();
     }
 
     public final BooleanProperty animatedProperty() {

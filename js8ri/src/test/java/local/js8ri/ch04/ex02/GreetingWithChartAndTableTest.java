@@ -7,6 +7,7 @@ package local.js8ri.ch04.ex02;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 /**
@@ -29,8 +30,18 @@ public class GreetingWithChartAndTableTest {
     @Test
     public void testGetText_nonNPE() {
         GreetingWithChartAndTable greeting = new GreetingWithChartAndTable();
+        greeting.setText("bar");
         String output = greeting.getText();
         assertNotNull(output);
+    }
+
+    @Test
+    public void testGetText_propertyCase() {
+        GreetingWithChartAndTable greeting = new GreetingWithChartAndTable();
+        greeting.setText("foo");
+        assertEquals("foo", greeting.textProperty().get());
+        greeting.setText("bar");
+        assertEquals("bar", greeting.getText());
     }
 
     @Test
