@@ -27,18 +27,10 @@ public class TransformerAppTest {
     }
 
     @Test
-    public void testTransform_normalUnaryOperatorInput() {
-        Image result = TransformerApp.transform(image, Color::brighter);
-        assertNotNull(result);
-        assertNotEquals(result, image);
-    }
-
-    @Test
     public void testTransform_normalColorTransformerInput() {
         Image result = TransformerApp.transform(image, (x, y, c) ->
                 x < 10 || x > image.getWidth() - 10 || y < 10 || y > image.getHeight() - 10 ? Color.GRAY : c);
         assertNotNull(result);
         assertNotEquals(result, image);
     }
-
 }

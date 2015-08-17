@@ -14,7 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.annotation.Nonnull;
-import java.util.function.UnaryOperator;
 
 /**
  * @author mikan
@@ -30,28 +29,10 @@ public class TransformerApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Image image = new Image(IMAGE_URL);
-        Image brightenedImage = transform(image, Color::brighter);
         Image image2 = transform(image, (x, y, c) ->
                 x < 10 || x > image.getWidth() - 10 || y < 10 || y > image.getHeight() - 10 ? Color.GRAY : c);
-        primaryStage.setScene(new Scene(new HBox(
-                new ImageView(image),
-                new ImageView(brightenedImage),
-                new ImageView(image2)
-        )));
+        primaryStage.setScene(new Scene(new HBox(new ImageView(image), new ImageView(image2))));
         primaryStage.show();
-    }
-
-    @Nonnull
-    public static Image transform(@Nonnull Image in, @Nonnull UnaryOperator<Color> f) {
-        int width = (int) in.getWidth();
-        int height = (int) in.getHeight();
-        WritableImage out = new WritableImage(width, height);
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                out.getPixelWriter().setColor(x, y, f.apply(in.getPixelReader().getColor(x, y)));
-            }
-        }
-        return out;
     }
 
     @Nonnull

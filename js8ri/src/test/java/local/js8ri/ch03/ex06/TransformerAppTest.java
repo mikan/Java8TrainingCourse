@@ -7,7 +7,6 @@ package local.js8ri.ch03.ex06;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -24,21 +23,6 @@ public class TransformerAppTest {
     @BeforeClass
     public static void initImage() {
         image = new WritableImage(100, 100);
-    }
-
-    @Test
-    public void testTransform_normalUnaryOperatorInput() {
-        Image result = TransformerApp.transform(image, Color::brighter);
-        assertNotNull(result);
-        assertNotEquals(result, image);
-    }
-
-    @Test
-    public void testTransform_normalColorTransformerInput() {
-        Image result = TransformerApp.transform(image, (x, y, c) ->
-                x < 10 || x > image.getWidth() - 10 || y < 10 || y > image.getHeight() - 10 ? Color.GRAY : c);
-        assertNotNull(result);
-        assertNotEquals(result, image);
     }
 
     @Test

@@ -3,12 +3,11 @@
  * https://github.com/mikan/Java8TrainingCourse
  */
 
-package local.js8ri.ch03.ex08;
+package local.js8ri.ch03.ex10;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
-import local.js8ri.ch03.ex10.UnaryComposeType;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
