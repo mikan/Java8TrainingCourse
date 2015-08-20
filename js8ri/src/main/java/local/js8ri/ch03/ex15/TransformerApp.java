@@ -14,7 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import javax.annotation.Nonnull;
-import java.util.function.UnaryOperator;
 
 /**
  * @author mikan
@@ -33,11 +32,6 @@ public class TransformerApp extends Application {
         Image latentImage = LatentImage.from(image).transform(Color::brighter).transform(Color::grayscale).toImage();
         primaryStage.setScene(new Scene(new HBox(new ImageView(image), new ImageView(latentImage))));
         primaryStage.show();
-    }
-
-    @Nonnull
-    public static ColorTransformer createColorTransformer(@Nonnull UnaryOperator<Color> f) {
-        return (x, y, c) -> f.apply(c); // unused: x, y
     }
 
     @FunctionalInterface

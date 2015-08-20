@@ -5,6 +5,7 @@
 package local.js8ri.ch03.ex16;
 
 import java.time.LocalTime;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -17,6 +18,10 @@ public class DoInOrderAsync {
 
     private static final int LOOP_COUNT = 5;
     private static final int LOOP_INTERVAL = 1000;
+
+    private DoInOrderAsync() {
+        // static use only
+    }
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -51,6 +56,9 @@ public class DoInOrderAsync {
 
     public static <T> void doInOrderAsync(Supplier<? extends T> first, BiConsumer<? super T, Throwable> second,
             Consumer<? super Throwable> handler) {
+        Objects.requireNonNull(first);
+        Objects.requireNonNull(second);
+        Objects.requireNonNull(handler);
         Thread t = new Thread() {
             @Override
             public void run() {
@@ -67,6 +75,8 @@ public class DoInOrderAsync {
     }
 
     public static <T> void doInOrderAsync(Supplier<? extends T> first, BiConsumer<? super T, ? super Throwable> second) {
+        Objects.requireNonNull(first);
+        Objects.requireNonNull(second);
         Thread t = new Thread() {
             @Override
             public void run() {
