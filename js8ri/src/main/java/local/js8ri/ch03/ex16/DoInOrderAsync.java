@@ -49,8 +49,8 @@ public class DoInOrderAsync {
         }
     }
 
-    public static <T> void doInOrderAsync(Supplier<T> first, BiConsumer<T, Throwable> second,
-            Consumer<Throwable> handler) {
+    public static <T> void doInOrderAsync(Supplier<? extends T> first, BiConsumer<? super T, Throwable> second,
+            Consumer<? super Throwable> handler) {
         Thread t = new Thread() {
             @Override
             public void run() {
@@ -66,7 +66,7 @@ public class DoInOrderAsync {
         t.start();
     }
 
-    public static <T> void doInOrderAsync(Supplier<T> first, BiConsumer<T, Throwable> second) {
+    public static <T> void doInOrderAsync(Supplier<? extends T> first, BiConsumer<? super T, ? super Throwable> second) {
         Thread t = new Thread() {
             @Override
             public void run() {

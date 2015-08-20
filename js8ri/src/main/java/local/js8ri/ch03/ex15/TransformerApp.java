@@ -2,7 +2,8 @@
  * Copyright (c) 2015. Yutaka Kato. All rights reserved.
  * https://github.com/mikan/Java8TrainingCourse
  */
-package local.js8ri.ch03.ex12;
+
+package local.js8ri.ch03.ex15;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -29,18 +30,8 @@ public class TransformerApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Image image = new Image(IMAGE_URL);
-        Image latentImage = LatentImage.from(image)
-                .transform(Color::brighter)
-                .transform(Color::grayscale)
-                .toImage();
-        Image latentImage2 = LatentImage2.from(image)
-                .transform((x, y, c) -> c.brighter())
-                .transform((x, y, c) -> c.grayscale())
-                .toImage();
-        primaryStage.setScene(new Scene(new HBox(new ImageView(image),
-                new ImageView(latentImage),
-                new ImageView(latentImage2)
-        )));
+        Image latentImage = LatentImage.from(image).transform(Color::brighter).transform(Color::grayscale).toImage();
+        primaryStage.setScene(new Scene(new HBox(new ImageView(image), new ImageView(latentImage))));
         primaryStage.show();
     }
 

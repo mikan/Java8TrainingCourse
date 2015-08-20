@@ -2,13 +2,16 @@
  * Copyright (c) 2015. Yutaka Kato. All rights reserved.
  * https://github.com/mikan/Java8TrainingCourse
  */
-package local.js8ri.ch03.ex12;
+
+package local.js8ri.ch03.ex14;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -29,29 +32,24 @@ public class TransformerApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Image image = new Image(IMAGE_URL);
-        Image latentImage = LatentImage.from(image)
-                .transform(Color::brighter)
-                .transform(Color::grayscale)
-                .toImage();
-        Image latentImage2 = LatentImage2.from(image)
-                .transform((x, y, c) -> c.brighter())
-                .transform((x, y, c) -> c.grayscale())
-                .toImage();
-        primaryStage.setScene(new Scene(new HBox(new ImageView(image),
-                new ImageView(latentImage),
-                new ImageView(latentImage2)
-        )));
+        int width = (int) image.getWidth() - 1;
+        Image blur = LatentImage.from(image).transform(TransformerGenerator.createBlur(20)).toImage();
+        Image edge = LatentImage.from(image).transform(TransformerGenerator.createEdgeDetection()).toImage();
+        Image mirror = LatentImage.from(image).transform((x, y, reader) -> reader.getColor(width - x, y).grayscale()).toImage();
+        primaryStage.setScene(new Scene(new VBox(
+                new HBox(new ImageView(image), new ImageView(mirror)),
+                new HBox(new ImageView(blur), new ImageView(edge)))));
         primaryStage.show();
     }
 
     @Nonnull
     public static ColorTransformer createColorTransformer(@Nonnull UnaryOperator<Color> f) {
-        return (x, y, c) -> f.apply(c); // unused: x, y
+        return (x, y, c) -> f.apply(c.getColor(x, y));
     }
 
     @FunctionalInterface
     public interface ColorTransformer {
 
-        @Nonnull Color apply(int x, int y, @Nonnull Color colorAtXY);
+        @Nonnull Color apply(int x, int y, @Nonnull PixelReader reader);
     }
 }
