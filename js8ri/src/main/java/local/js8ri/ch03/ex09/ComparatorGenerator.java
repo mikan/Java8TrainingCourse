@@ -20,20 +20,22 @@ public class ComparatorGenerator {
     public static <T> Comparator<T> lexicographicComparator(String... fieldNames) {
         return (first, second) -> {
             for (String fieldName : fieldNames) {
-                String firstValue = null, secondValue = null;
+                Comparable<?> firstValue = null;
+                Comparable<?> secondValue = null;
                 try {
                     Field firstField = first.getClass().getField(fieldName);
                     firstField.setAccessible(true);
-                    firstValue = (String) firstField.get(first);
+                    firstValue = (Comparable) firstField.get(first);
                     Field secondField = second.getClass().getField(fieldName);
                     secondField.setAccessible(true);
-                    secondValue = (String) secondField.get(second);
+                    secondValue = (Comparable) secondField.get(second);
                 } catch (ReflectiveOperationException e) {
                     System.err.println("ERROR: " + e);
                     continue;
                 }
                 if (firstValue != null && secondValue != null) {
-                    int compare = firstValue.compareTo(secondValue);
+                    @SuppressWarnings("unchecked") // escape <?>
+                    int compare = ((Comparable) firstValue).compareTo(secondValue);
                     System.out.println("Comparing " + firstValue + " : " + secondValue + " -> " + compare);
                     if (compare != 0) {
                         return compare;

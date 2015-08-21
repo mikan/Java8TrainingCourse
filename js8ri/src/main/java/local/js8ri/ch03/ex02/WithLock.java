@@ -19,7 +19,7 @@ public class WithLock {
     }
 
     /**
-     * Run {code runnable} with specified lock instance.
+     * Run {@code runnable} with specified lock instance.
      *
      * @param lock     lock
      * @param runnable runnable
