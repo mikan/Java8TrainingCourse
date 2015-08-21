@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.function.UnaryOperator;
 
 /**
- *
  * @author mikan
  */
 public class LatentImage {
@@ -46,13 +45,11 @@ public class LatentImage {
         int width = (int) in.getWidth();
         int height = (int) in.getHeight();
         WritableImage out = new WritableImage(width, height);
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                Color c = in.getPixelReader().getColor(x, y);
-                for (TransformerApp.ColorTransformer f : pendingOperations) {
-                    c = f.apply(x, y, in.getPixelReader());
+        for (TransformerApp.ColorTransformer f : pendingOperations) {
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    out.getPixelWriter().setColor(x, y, f.apply(x, y, in.getPixelReader()));
                 }
-                out.getPixelWriter().setColor(x, y, c);
             }
         }
         return out;
