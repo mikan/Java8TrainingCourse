@@ -8,6 +8,7 @@ package local.js8ri.ch03.ex13;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import local.js8ri.ch03.ex13.TransformerApp.ColorTransformer;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.function.UnaryOperator;
 public class LatentImage {
 
     private final Image in;
-    private final List<TransformerApp.ColorTransformer> pendingOperations;
+    private final List<ColorTransformer> pendingOperations;
 
     private LatentImage(Image in) {
         this.in = in;
@@ -36,7 +37,7 @@ public class LatentImage {
         return this;
     }
 
-    public LatentImage transform(TransformerApp.ColorTransformer f) {
+    public LatentImage transform(ColorTransformer f) {
         pendingOperations.add(f);
         return this;
     }
@@ -46,13 +47,11 @@ public class LatentImage {
         int width = (int) in.getWidth();
         int height = (int) in.getHeight();
         WritableImage out = new WritableImage(width, height);
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                Color c = in.getPixelReader().getColor(x, y);
-                for (TransformerApp.ColorTransformer f : pendingOperations) {
-                    c = f.apply(x, y, this);
+        for (ColorTransformer f : pendingOperations) {
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    out.getPixelWriter().setColor(x, y, f.apply(x, y, this));
                 }
-                out.getPixelWriter().setColor(x, y, c);
             }
         }
         return out;
