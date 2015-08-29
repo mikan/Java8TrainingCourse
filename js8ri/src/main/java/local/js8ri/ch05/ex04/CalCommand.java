@@ -112,6 +112,7 @@ public class CalCommand {
         LocalDate beginDate = LocalDate.of(date.getYear(), date.getMonth(), 1);
         StringBuilder builder = new StringBuilder();
         builder.append(String.format("%7d月 %d%n", date.getMonthValue(), date.getYear()));
+        builder.append(String.format("月 火 水 木 金 土 日%n"));
         LocalDate work = beginDate;
         DayOfWeek dayOfWeek = beginDayOfWeek;
         while (dayOfWeek.getValue() < beginDate.getDayOfWeek().getValue()) {
