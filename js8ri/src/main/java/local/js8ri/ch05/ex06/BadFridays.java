@@ -5,7 +5,8 @@
 
 package local.js8ri.ch05.ex06;
 
-import javax.annotation.Nonnull;
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class BadFridays {
         // static use only
     }
 
-    @Nonnull
+    @NonNull
     public static List<LocalDate> calcBadFridays(int century) {
         List<LocalDate> badFridays = new ArrayList<>();
         LocalDate day = LocalDate.ofYearDay((century - 1) * 100 + 1, 13);
