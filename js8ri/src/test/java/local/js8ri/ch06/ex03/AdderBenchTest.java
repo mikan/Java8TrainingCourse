@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class AdderBenchTest {
 
     @Rule
-    public Timeout timeout = new Timeout(20, TimeUnit.SECONDS);
+    public Timeout timeout = new Timeout(3, TimeUnit.MINUTES);
 
     @Test
     public void testBench() {

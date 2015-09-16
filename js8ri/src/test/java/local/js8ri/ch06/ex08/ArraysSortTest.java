@@ -5,7 +5,9 @@
 
 package local.js8ri.ch06.ex08;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -15,6 +17,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 /**
@@ -23,6 +26,9 @@ import java.util.stream.IntStream;
  * @author mikan
  */
 public class ArraysSortTest {
+
+    @Rule
+    public Timeout timeout = new Timeout(5, TimeUnit.MINUTES);
 
     private static final ArraysSort SUT = new ArraysSort(); // system under test
 
