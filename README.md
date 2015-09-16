@@ -44,8 +44,8 @@ Gradle
 
 @YoshikiShibata
 
-#### Java 8 勉強会
+#### AOSN 輪読会
 
 @MrBearing @YuichiroSato @namichan0801 @LagunaPresa @intptr-t @s-hosoai
 
-https://github.com/Java8Workshop
+https://github.com/aosn
