@@ -36,7 +36,7 @@ public class WordLoader {
                 return;
             }
             Stream.of(contents.split("[\\P{L}]+")).forEach(s -> result.computeIfAbsent(
-                    s.toLowerCase(), x -> Collections.singleton(f)));
+                    s.toLowerCase(), x -> Collections.singleton(f))); // That's cool.
         }));
         executorService.shutdown();
         try {
