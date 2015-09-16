@@ -19,12 +19,6 @@ import java.util.stream.IntStream;
  */
 public class AdderBench {
 
-    public static void main(String[] args) {
-        AdderBench bench = new AdderBench();
-        bench.incrementWithAtomicLong(1000, 100000);
-        bench.incrementWithLongAdder(1000, 100000);
-    }
-
     public void incrementWithAtomicLong(int threads, int limit) {
         AtomicLong adder = new AtomicLong();
         ExecutorService executorService = Executors.newFixedThreadPool(threads);
