@@ -30,5 +30,6 @@ public class Pair<T> extends AbstractMap.SimpleEntry<T, T> {
         Objects.requireNonNull(mapper);
         T target = getKey() != null ? getKey() : getValue();
         return target == null ? null : mapper.apply(target);
+        // Defining (k1, v1, k2 ,v2) to (k3, v3) operation is very difficult.
     }
 }
