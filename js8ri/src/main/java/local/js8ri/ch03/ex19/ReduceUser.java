@@ -13,10 +13,10 @@ import java.util.stream.Stream;
 public class ReduceUser {
 
     public static void main(String[] args) {
-        Stream<String> stringStream = Stream.of("foo", "bar", "baz");
+        Stream<String> stringStream = Stream.of("1", "2", "3");
         // <U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner)
-        String result1 = stringStream.reduce("", (s1, s2) -> s1 + s2, (s1, s2) -> s1 + s2);
-        // NOTE: "String s1" is used for both parameter type ("super") and return type ("extends").
+        Integer result1 = stringStream.reduce(0, (Integer i, String s) -> i + Integer.parseInt(s), (i1, i2) -> i1 + i2);
+        // NOTE: String "s" is used for both parameter type ("super") and return type ("extends").
         System.out.println("result: " + result1);
     }
 }
