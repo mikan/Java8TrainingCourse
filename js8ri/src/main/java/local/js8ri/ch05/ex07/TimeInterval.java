@@ -8,7 +8,7 @@ package local.js8ri.ch05.ex07;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalUnit;
 import java.util.Objects;
@@ -18,7 +18,7 @@ import java.util.Objects;
  */
 public class TimeInterval {
 
-    private static final TemporalUnit ZERO_UNIT = Duration.ZERO.getUnits().get(0);
+    private static final TemporalUnit ZERO_UNIT = ChronoUnit.SECONDS;
     @NonNull
     private final Temporal begin;
     @NonNull
@@ -87,11 +87,8 @@ public class TimeInterval {
         if (begin.equals(other.begin) || end.equals(other.end)) {
             return true;
         }
-        if (begin.until(other.begin, ZERO_UNIT) >= 0) {
-            return end.until(other.begin, ZERO_UNIT) > 0 && other.begin.until(end, ZERO_UNIT) > 0;
-        } else {
-            return begin.until(other.end, ZERO_UNIT) > 0 && other.end.until(begin, ZERO_UNIT) > 0;
-        }
+        return begin.until(other.begin, ZERO_UNIT) >= 0 ?
+                other.begin.until(end, ZERO_UNIT) > 0 : begin.until(other.end, ZERO_UNIT) > 0;
     }
 
     /**
