@@ -17,7 +17,7 @@ var JString = java.lang.String;
 
 var b = new BigInteger('1234567890987654321');
 print("[JS long]")
-print(b.longValue()); // 1234567890987654400 (JS long)
+print(b.longValue()); // 1234567890987654400 (JS Number)
 print("[Java long]")
 print(JString.valueOf(b.longValue())) // 1234567890987654321 (J long) [OK!]
 print("[JS mod]")
