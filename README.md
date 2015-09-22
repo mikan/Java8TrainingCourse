@@ -44,8 +44,8 @@ Gradle
 
 @YoshikiShibata
 
-#### AOSN 輪読会
+#### AOSN 読書会
 
 @MrBearing @YuichiroSato @namichan0801 @LagunaPresa @intptr-t @s-hosoai
 
-https://github.com/aosn
+http://aosn.github.io/.
