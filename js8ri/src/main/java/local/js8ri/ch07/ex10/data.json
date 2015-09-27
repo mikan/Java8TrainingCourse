@@ -1,0 +1,10 @@
+{
+  "populations":[
+    {"continent":"Asia", "population":4298723000.0},
+    {"continent":"North America", "population":355361000.0},
+    {"continent":"South America", "population":616644000.0},
+    {"continent":"Europe", "population":742452000.0},
+    {"continent":"Africa", "population":1110635000.0},
+    {"continent":"Oceania", "population":38304000.0}
+  ]
+}
