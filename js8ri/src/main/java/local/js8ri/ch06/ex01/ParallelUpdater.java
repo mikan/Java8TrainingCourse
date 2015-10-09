@@ -11,7 +11,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Objects;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +30,6 @@ public class ParallelUpdater {
         Objects.requireNonNull(files);
         AtomicReference<String> longest = new AtomicReference<>("");
         ExecutorService executorService = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
-        ConcurrentHashMap<String, Set<File>> result = new ConcurrentHashMap<>();
         files.forEach(f -> executorService.submit(() -> {
             String contents;
             try {
