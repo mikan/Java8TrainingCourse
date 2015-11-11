@@ -31,5 +31,7 @@ public class MinimumSeedTest {
         assertEquals(0, prev(next(0)));
         assertEquals(10, prev(next(10)));
         assertEquals(100, prev(next(100)));
+        long maxValue = (long) Math.pow(2, 48) - 1;
+        assertEquals(maxValue, prev(next(maxValue)));
     }
 }
