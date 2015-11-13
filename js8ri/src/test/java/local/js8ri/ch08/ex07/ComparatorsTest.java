@@ -24,7 +24,6 @@ public class ComparatorsTest {
         List<String> strings1 = Arrays.asList(null, "A", "B", "C", null);
         List<String> strings2 = new ArrayList<>(strings1);
         Collections.sort(strings1, Comparators.reversedNullsFirst());
-        Collections.sort(strings2, Comparator.<String>naturalOrder().reversed());
-        assertThat(strings1, is(strings2));
+        assertThat(strings1, is(Arrays.asList("C", "B", "A", null, null)));
     }
 }
