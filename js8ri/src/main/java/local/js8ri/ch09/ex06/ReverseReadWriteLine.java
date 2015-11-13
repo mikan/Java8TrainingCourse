@@ -24,7 +24,7 @@ public class ReverseReadWriteLine {
         try {
             List<String> lines = Files.readAllLines(Paths.get(new File("README.md").toURI()));
             Collections.reverse(lines);
-            Files.write(Paths.get(new File("out/ch9.ex06.txt").toURI()), lines);
+            Files.write(Paths.get(new File("build/ch9.ex06.txt").toURI()), lines);
         } catch (IOException ex) {
             Logger.getLogger(ReverseReadWriteLine.class.getName()).log(Level.SEVERE, null, ex);
         }

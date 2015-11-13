@@ -25,7 +25,7 @@ public class ReverseReadWrite {
             for (int i = source.length - 1; i >= 0; i--) {
                 reversed[source.length - 1 - i] = source[i];
             }
-            Files.write(Paths.get(new File("out/ch9.ex05.txt").toURI()), reversed);
+            Files.write(Paths.get(new File("build/ch9.ex05.txt").toURI()), reversed);
         } catch (IOException ex) {
             Logger.getLogger(ReverseReadWrite.class.getName()).log(Level.SEVERE, null, ex);
         }
