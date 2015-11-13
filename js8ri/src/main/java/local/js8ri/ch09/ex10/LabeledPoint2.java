@@ -22,7 +22,7 @@ public class LabeledPoint2 extends LabeledPoint implements Comparable<LabeledPoi
 
     @Override
     public int compareTo(LabeledPoint2 other) {
-	Objects.requireNonNull(other);
+        Objects.requireNonNull(other);
         int diff = Integer.compare(getX(), other.getX());
         if (diff != 0) {
             return diff;

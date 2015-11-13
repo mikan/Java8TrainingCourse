@@ -16,7 +16,6 @@ import java.util.Objects;
 import java.util.logging.Logger;
 
 /**
- *
  * @author mikan
  */
 public class UrlRetriever {

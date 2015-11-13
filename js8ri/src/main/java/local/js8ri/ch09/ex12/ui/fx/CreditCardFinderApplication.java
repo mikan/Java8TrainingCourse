@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
  * @author mikan
  */
 public class CreditCardFinderApplication extends Application {

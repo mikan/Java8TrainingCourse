@@ -22,11 +22,11 @@ public class LabeledPoint {
         this.y = y;
         this.label = label;
     }
-    
+
     public int getX() {
         return x;
     }
-    
+
     public int getY() {
         return y;
     }
@@ -49,10 +49,10 @@ public class LabeledPoint {
         LabeledPoint other = (LabeledPoint) otherObject;
         return Objects.equals(x, other.x) && Objects.equals(y, other.y) && Objects.equals(label, other.label);
     }
-    
+
     @Override
     public int hashCode() {
-	return Objects.hash(x, y, label);
+        return Objects.hash(x, y, label);
     }
 
     public int hashCodeFaster() {
