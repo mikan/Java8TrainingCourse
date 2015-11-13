@@ -29,7 +29,7 @@ public class TryWithResources {
             while (in.hasNext()) {
                 out.println(in.next().toLowerCase());
             }
-        } catch (FileNotFoundException ex) {
+        } catch (Throwable ex) {
             LOG.severe(ex.getMessage());
             throw ex;
         } finally {

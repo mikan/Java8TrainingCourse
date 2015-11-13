@@ -6,7 +6,6 @@ package local.js8ri.ch09.ex02;
 
 import java.io.Closeable;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -31,7 +30,7 @@ public class TryWithResources2 {
             while (in.hasNext()) {
                 out.println(in.next().toLowerCase());
             }
-        } catch (FileNotFoundException ex) {
+        } catch (Throwable ex) {
             LOG.severe(ex.getMessage());
             original = ex;
             throw ex;
