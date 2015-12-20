@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (c) 2015. Yutaka Kato. All rights reserved.
-  ~ https://github.com/mikan/Java8TrainingCourse
+  ~ https://github.com/mikan/java8-training-course
   -->
 
 <jnlp spec="1.0" xmlns:jfx="http://javafx.com">
