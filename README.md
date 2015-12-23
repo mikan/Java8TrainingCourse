@@ -1,7 +1,7 @@
 # Java 8 Training Course
 
-[![Build Status](https://travis-ci.org/mikan/Java8TrainingCourse.svg)](https://travis-ci.org/mikan/Java8TrainingCourse)
-[![Coverage Status](https://coveralls.io/repos/mikan/Java8TrainingCourse/badge.svg?branch=master&service=github)](https://coveralls.io/github/mikan/Java8TrainingCourse?branch=master)
+[![Build Status](https://travis-ci.org/mikan/java8-training-course.svg)](https://travis-ci.org/mikan/java8-training-course)
+[![Coverage Status](https://coveralls.io/repos/mikan/java8-training-course/badge.svg?branch=master&service=github)](https://coveralls.io/github/mikan/java8-training-course?branch=master)
 
 ### 概要
 
