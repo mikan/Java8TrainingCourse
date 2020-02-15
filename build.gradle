@@ -1,25 +1,18 @@
 /*
- * Copyright (c) 2015. Yutaka Kato. All rights reserved.
+ * Copyright (c) 2015-2020. Yutaka Kato. All rights reserved.
  * https://github.com/mikan/java8-training-course
  */
+plugins {
+    id "java"
+    id "com.github.kt3k.coveralls" version "2.9.0"
+    id "jacoco"
+}
+
 group 'local'
 version '1.0-SNAPSHOT'
 
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath('org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1')
-    }
-}
-
-apply plugin: 'java'
-apply plugin: 'jacoco'
-apply plugin: 'com.github.kt3k.coveralls'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
 
 repositories {
     mavenCentral()

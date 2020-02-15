@@ -2,26 +2,19 @@
  * Copyright (c) 2015. Yutaka Kato. All rights reserved.
  * https://github.com/mikan/java8-training-course
  */
+plugins {
+    id "java"
+    id "com.github.kt3k.coveralls"
+    id "jacoco"
+    id "com.github.spotbugs" version "3.0.0"
+    id "org.openjfx.javafxplugin" version "0.0.8"
+    id "pmd"
+}
 
 group 'local'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
-apply plugin: 'jacoco'
-apply plugin: 'findbugs'
-apply plugin: 'pmd'
-apply plugin: 'com.github.kt3k.coveralls'
-
-sourceCompatibility = 1.8
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.1'
-    }
-}
+sourceCompatibility = 1.11
 
 repositories {
     mavenCentral()
@@ -41,7 +34,11 @@ dependencies {
     testCompile group: 'org.powermock', name: 'powermock-module-junit4', version: '1.6.2'
 }
 
-findbugs {
+javafx {
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web']
+}
+
+spotbugs {
     ignoreFailures = true
     sourceSets = [sourceSets.main]
     effort = "max"
