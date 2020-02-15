@@ -5,6 +5,7 @@
 
 package local.js8ri.ch06.ex08;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
@@ -43,6 +44,7 @@ public class ArraysSortTest {
      * </pre>
      */
     @Test
+    @Ignore // OutOfMemory
     public void comparePerformance() {
         measureCollect(10000); // test run
         Map<Integer, Entry<Duration, Duration>> result = new TreeMap<>();

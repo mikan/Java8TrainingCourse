@@ -5,6 +5,7 @@
 
 package local.js8ri.ch01.ex01;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.Theories;
@@ -50,6 +51,7 @@ public class ArraysSortTest {
     }
 
     @Theory
+    @Ignore
     public void testDoSortAsParallel_largeInput(String[] input) {
         assumeTrue(input.length > DATA_SIZE);
         ArraysSort arraysSort = new ArraysSort();
@@ -58,6 +60,7 @@ public class ArraysSortTest {
     }
 
     @Theory
+    @Ignore
     public void testDoSortAsParallel_smallInput(String[] input) {
         assumeTrue(input.length <= DATA_SIZE);
         ArraysSort arraysSort = new ArraysSort();
