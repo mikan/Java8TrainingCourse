@@ -3,6 +3,6 @@
  * https://github.com/mikan/java8-training-course
  */
 
-rootProject.name = 'Java8TrainingCourse'
+rootProject.name = 'java8-training-course'
 include 'js8ri'
 
